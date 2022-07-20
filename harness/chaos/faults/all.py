@@ -28,10 +28,12 @@ from chaos.faults.combinator_as_oneoff import AsOneoffCombinator
 from chaos.faults.combinator_repeat import RepeatCombinator
 from chaos.faults.recycle_all import RecycleAllFault
 from chaos.faults.recycle_storm import RecycleStormFault
+from chaos.faults.isolate_client_from_cluster import IsolateClientFromCluster
 
 FAULTS = {
     "isolate_controller": IsolateControllerFault,
     "isolate_follower": IsolateFollowerFault,
+    "isolate_client_from_cluster": IsolateClientFromCluster,
     "isolate_leader": IsolateLeaderFault,
     "isolate_tx_leader": IsolateTxLeaderFault,
     "isolate_tx_follower": IsolateTxFollowerFault,
