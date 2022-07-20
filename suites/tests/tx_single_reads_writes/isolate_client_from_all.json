@@ -1,0 +1,35 @@
+{
+    "name": "tx-single-reads-writes / java / isolate client from all",
+    "scenario": "tx_single_table_single_fault",
+    "topic": "topic1",
+    "replication": 3,
+    "workload": {
+        "name": "tx-single-reads-writes / java",
+        "checks": [
+            { "name": "consistency" },
+            { "name": "stat" }
+        ],
+        "settings": {
+            "reads": 1,
+            "writes": 1,
+            "retries": 5
+        }
+    },
+    "fault": {
+        "name": "repeat",
+        "subject": {
+            "name": "as_oneoff",
+            "subject": {
+                "name": "isolate_client_from_cluster",
+                "sleep_time": 12
+            },
+            "delay_s": 0
+        },
+        "times": 6,
+        "delay_s": 3,
+        "alias": "isolate_client_from_all"
+    },
+    "checks": [
+        { "name": "redpanda_process_liveness" }
+    ]
+}
